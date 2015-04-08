@@ -89,7 +89,7 @@ int SSL_send_and_recv(char *hostname, char *send_buf, char *recv_buf)
   SSL_library_init();
   
   //Set CTX
-  ctx = SSL_CTX_new(SSLv3_client_method());
+  ctx = SSL_CTX_new(TLSv1_2_client_method());
   if(ctx == NULL) {
     return -2;
   }
@@ -154,7 +154,7 @@ int SSL_send_and_recv(char *hostname, char *send_buf, char *recv_buf)
 
   //Close SSL Session
   ret = SSL_shutdown(ssl);
-  if(ret != 0) {
+  if(ret < 0) {
     return -7;
   }
   close(sock);

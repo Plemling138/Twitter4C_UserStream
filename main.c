@@ -52,8 +52,8 @@ int main(int argc, char *argv[])
   a = (struct Twitter_access_token *) calloc(1, sizeof(struct Twitter_access_token));
 
   //Set Consumer Key and Consumer Secret
-  char consumer_key[] = "[ENTER YOUR APPLICATION CONSUMER KEY]";
-  char consumer_secret[] = "[ENTER YOUR APPLICATION CONSUMER SECRET]";
+  char consumer_key[] = "[ENTER YOUR CONSUMER KEY]";
+  char consumer_secret[] = "[ENTER YOUR CONSUMER SECRET]";
 
   c->consumer_key = consumer_key;
   c->consumer_secret = consumer_secret;
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
   if(access_token == NULL) {
     //Get Request token
     if(errcode = Twitter_GetRequestToken(c, r), errcode < 0) {
-      printf("Failed to get Request token.\n");
+      printf("Failed to get Request token. Code %d\n", errcode);
       exit(errcode);
     }
     
